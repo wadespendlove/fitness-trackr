@@ -4,6 +4,9 @@
  * all of which update the token in state.
  */
 
+// AuthProvider provides the token, registration, logIn, logOut
+// essentially just authenticates
+
 import { createContext, useContext, useState } from "react";
 
 import { API } from "../api/ApiContext";

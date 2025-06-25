@@ -3,6 +3,8 @@
  * It also handles tags to refresh appropriate queries after a mutation.
  */
 
+//takes token from the AuthContext
+
 import { createContext, useContext, useState } from "react";
 
 import { useAuth } from "../auth/AuthContext";

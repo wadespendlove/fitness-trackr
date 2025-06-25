@@ -5,23 +5,23 @@ import { useApi } from "./ApiContext";
  * Returns a function to mutate some data via the API, as well as some state
  * that tracks the response of that mutation request.
  */
-export default function useMutation(method, resource, tagsToInvalidate) {
+export default function useMutation() {
   const { request, invalidateTags } = useApi();
 
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const mutate = async (body) => {
+  const mutate = async ({ method, resource, body, tagsToInvalidate }) => {
     setLoading(true);
     setError(null);
     try {
       const result = await request(resource, {
         method,
-        body: JSON.stringify(body),
+        ...(body ? { body: JSON.stringify(body) } : {}),
       });
       setData(result);
-      invalidateTags(tagsToInvalidate);
+      if (tagsToInvalidate) invalidateTags(tagsToInvalidate);
     } catch (e) {
       console.error(e);
       setError(e.message);

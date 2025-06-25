@@ -3,6 +3,7 @@ import { usePage } from "./layout/PageContext";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import ActivitiesPage from "./activities/ActivitiesPage";
+import Routines from "./routines/Routines.jsx";
 import Error404 from "./Error404.jsx";
 
 /**
@@ -16,6 +17,7 @@ export default function App() {
   if (page === "register") return <Register />;
   if (page === "login") return <Login />;
   if (page === "activities") return <ActivitiesPage />;
+  if (page === "routines") return <Routines />;
 
   return <Error404 />;
 }
